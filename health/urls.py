@@ -1,0 +1,41 @@
+from django.urls import path
+from . import views
+
+# Make sure to end each URL pattern with '' to make sure the end of the url
+# properly handles omitting the trailing slash.
+urlpatterns = [
+    path(r'login', views.login_view, name='login'),
+    path(r'logout', views.logout_view, name='logout'),
+    path(r'schedule', views.schedule, name='schedule'),
+    path(r'prescriptions', views.prescriptions,
+         name='prescriptions'),
+    path(r'messages', views.messages, name='messages'),
+    path(r'messages/(\d+)',
+         views.conversation, name='conversation'),
+    path(r'delete_prescription/(\d+)',
+         views.delete_prescription, name='delete_prescription'),
+    path(r'edit_prescription/(\d+)?',
+         views.prescription_form, name='edit_prescription'),
+    path(r'add_prescription',
+         views.add_prescription_form, name='add_prescription'),
+    path(r'delete_appointment/(\d+)',
+         views.delete_appointment, name='delete_appointment'),
+    path(r'edit_appointment/(\d+)?',
+         views.appointment_form, name='edit_appointment'),
+    path(r'add_appointment',
+         views.add_appointment_form, name='add_appointment'),
+    path(r'add_group', views.add_group, name='add_group'),
+    path(r'users/(\d+)', views.medical_information,
+         name='medical_information'),
+    path(r'users/me', views.my_medical_information,
+         name='my_medical_information'),
+    path(r'signup', views.signup, name='signup'),
+    path(r'users/(\d+)/info.json',
+         views.export, name='export'),
+    path(r'users/me/info.json',
+         views.export_me, name='export_me'),
+    path(r'users', views.users, name='users'),
+    path(r'logs', views.logs, name='logs'),
+    path(r'', views.home, name='home'),
+    path(r'home', views.home1, name='home1'),
+]
